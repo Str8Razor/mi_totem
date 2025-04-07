@@ -16,12 +16,30 @@ const key_override_t *key_overrides[] = {
 
 
 // *** Combos ***
-const uint16_t PROGMEM caps_combo[] = {KC_D, KC_O, COMBO_END};
 
-combo_t key_combos[] = {
-    COMBO(caps_combo, KC_CAPS_LOCK)
+//const uint16_t PROGMEM caps_combo[] = {KC_D, KC_O, COMBO_END};
+//combo_t key_combos[] = {
+//    COMBO(caps_combo, KC_CAPS_LOCK)
+//};
+
+enum combo_events {
+  COMBO_CAPS
 };
 
+const uint16_t PROGMEM caps_lock_combo[] = {KC_D, KC_O, COMBO_END};
+combo_t key_combos[] = {
+  [COMBO_CAPS] = COMBO_ACTION(caps_lock_combo)
+};
+
+void process_combo_event(uint16_t combo_index, bool pressed) {
+  switch(combo_index) {
+    case COMBO_CAPS:
+      if (pressed) {
+        tap_code16(KC_CAPS_LOCK);
+      }
+      break;
+  }
+};
 
 // *** Layers ***
 enum keymap_layers {
