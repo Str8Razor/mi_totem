@@ -31,26 +31,6 @@ enum keymap_layers {
     LAYER_FUN
 };
 
-
-// *** Home Row mod with SM_TD Library ***
-enum custom_keycodes {
-    SMTD_KEYCODES_BEGIN = SAFE_RANGE,
-    CKC_S, // reads as C(ustom) + KC_S
-    CKC_N,
-    CKC_T,
-    CKC_H,
-    CKC_ESC,
-    CKC_R,
-
-    CKC_A,
-    CKC_E,
-    CKC_I,
-    CKC_C,
-    CKC_SPACE,
-    CKC_DELETE,
-    SMTD_KEYCODES_END,
-};
-
 #include "sm_td.h"
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -62,24 +42,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
     switch (keycode) {
         // Left side home row
-        SMTD_MT(CKC_S, KC_S, KC_LEFT_GUI)
-        SMTD_MT(CKC_N, KC_N, KC_LEFT_ALT)
-        SMTD_MT(CKC_T, KC_T, KC_LEFT_CTRL)
-        SMTD_MT(CKC_H, KC_H, KC_LEFT_SHIFT)
+        SMTD_MT(KC_S, KC_LEFT_GUI)
+        SMTD_MT(KC_N, KC_LEFT_ALT)
+        SMTD_MT(KC_T, KC_LEFT_CTRL)
+        SMTD_MT(KC_H, KC_LEFT_SHIFT)
 
         // Switch layers
-        SMTD_LT(CKC_ESC, KC_ESC, LAYER_FUN)
-        SMTD_LT(CKC_R,   KC_R,   LAYER_NAV, 2)
+        SMTD_LT(KC_ESC, LAYER_FUN)
+        SMTD_LT(KC_R,   LAYER_NAV, 2)
 
         // Right side home row
-        SMTD_MT(CKC_A, KC_A, KC_RIGHT_SHIFT)
-        SMTD_MT(CKC_E, KC_E, KC_RIGHT_CTRL)
-        SMTD_MT(CKC_I, KC_I, KC_RIGHT_ALT)
-        SMTD_MT(CKC_C, KC_C, KC_RIGHT_GUI)
+        SMTD_MT(KC_A, KC_RIGHT_SHIFT)
+        SMTD_MT(KC_E, KC_RIGHT_CTRL)
+        SMTD_MT(KC_I, KC_RIGHT_ALT)
+        SMTD_MT(KC_C, KC_RIGHT_GUI)
 
         // Switch layers
-        SMTD_LT(CKC_SPACE,  KC_SPACE,  LAYER_NUM, 2)
-        SMTD_LT(CKC_DELETE, KC_DELETE, LAYER_FUN, 2)
+        SMTD_LT(KC_SPACE,  LAYER_NUM, 2)
+        SMTD_LT(KC_DELETE, LAYER_FUN, 2)
     }
 }
 
@@ -87,10 +67,10 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT(
               KC_F,   KC_P,   KC_D,     KC_L,   KC_X,        KC_Q,         KC_U,       KC_O,       KC_Y,     KC_B,
-              CKC_S,  CKC_N,  CKC_T,    CKC_H,  KC_K,        KC_Z,         CKC_A,      CKC_E,      CKC_I,    CKC_C,
+              KC_S,   KC_N,   KC_T,     KC_H,   KC_K,        KC_Z,         KC_A,       KC_E,       KC_I,     KC_C,
     KC_TAB,   KC_V,   KC_W,   KC_G,     KC_M,   KC_J,        KC_MINUS,     KC_EQUAL,   KC_COMMA,   KC_DOT,   KC_QUOTE,   KC_QUESTION,
 
-                              CKC_ESC,  CKC_R,  KC_ENTER,    KC_BACKSPACE, CKC_SPACE,  CKC_DELETE
+                             KC_ESC,   KC_R,  KC_ENTER,    KC_BACKSPACE,  KC_SPACE,   KC_DELETE
   ),
 
   [LAYER_NAV] = LAYOUT(
