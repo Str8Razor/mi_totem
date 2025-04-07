@@ -39,7 +39,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
    return true;
 }
 
-void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
+smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
     switch (keycode) {
         // Left side home row
         SMTD_MT(KC_S, KC_LEFT_GUI)
@@ -61,6 +61,8 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
         SMTD_LT(KC_SPACE,  LAYER_NUM, 2)
         SMTD_LT(KC_DELETE, LAYER_FUN, 2)
     }
+
+    return SMTD_RESOLUTION_UNHANDLED;
 }
 
 // *** Keymaps
