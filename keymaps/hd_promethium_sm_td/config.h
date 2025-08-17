@@ -1,0 +1,18 @@
+#pragma once
+
+//#define MASTER_LEFT
+#define MASTER_RIGHT
+
+// Tapping Term
+#define TAPPING_TERM 200
+#define RELEASING_TERM 50
+
+#define MAX_DEFERRED_EXECUTORS 10
+
+// Auto Shift
+#define NO_AUTO_SHIFT_ALPHA
+#define AUTO_SHIFT_NO_SETUP
+
+#undef LOCKING_SUPPORT_ENABLE
+#undef LOCKING_RESYNC_ENABLE
+#define NO_ACTION_ONESHOT
